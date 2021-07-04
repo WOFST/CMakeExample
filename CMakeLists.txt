@@ -6,13 +6,16 @@ project (CMakeExample)
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+# for install
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/INSTALL/${PROJECT_NAME})
+
 # Add user cmake module
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/Tools/CMake)
 include(general)
 
 # optional 
 # target source group
-option(keep_source_group_tree "Keep source group with local file system" ON)
+option(keep_source_group_tree "Keep source group with local file system" OFF)
 
 # BuildingTest
 add_subdirectory(BuildingTest)

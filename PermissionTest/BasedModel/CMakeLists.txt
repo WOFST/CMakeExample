@@ -1,7 +1,6 @@
 project(BasedModel)
 
-file (GLOB_RECURSE prj_headerFiles "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
-file (GLOB_RECURSE prj_srcFiles "${CMAKE_CURRENT_SOURCE_DIR}/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+fetch_project_source_files()
 
 add_library(${PROJECT_NAME} SHARED 
 	${prj_headerFiles} 
