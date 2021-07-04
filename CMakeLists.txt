@@ -1,15 +1,22 @@
 cmake_minimum_required (VERSION 3.12)
 
-project (CmakeAccessTest)
+project (CMakeTest)
 
+# general configuration 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-# CMakePermissionTest
-add_subdirectory(CMakePermissionTest/InterfaceModel)
-add_subdirectory(CMakePermissionTest/PrivateModel)
-add_subdirectory(CMakePermissionTest/PublicModel)
-add_subdirectory(CMakePermissionTest/BasedModel)
-add_subdirectory(CMakePermissionTest/AModel)
-add_subdirectory(CMakePermissionTest/BModel)
-add_subdirectory(CMakePermissionTest/CModel)
+# Add user cmake module
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/Tools/CMake)
+include(general)
+
+# optional 
+# target source group
+option(keep_source_group_tree "Keep source group with local file system" ON)
+
+# BuildingTest
+add_subdirectory(BuildingTest)
+add_subdirectory(CTest)
+add_subdirectory(InstallTest)
+add_subdirectory(PackageTest)
+add_subdirectory(PermissionTest)

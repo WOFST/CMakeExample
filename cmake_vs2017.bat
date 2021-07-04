@@ -8,5 +8,3 @@ if %errorlevel% == 1 (
 ) else (
 	rem todo Nothing
 )
-	
-pause

@@ -21,3 +21,5 @@ target_link_libraries ( ${PROJECT_NAME}
 	PUBLIC
 	PublicModel
 	)
+
+use_group_folder()

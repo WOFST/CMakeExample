@@ -8,3 +8,5 @@ add_executable (${PROJECT_NAME}
 	${prj_srcFiles})
 	
 # target_link_libraries ( ${PROJECT_NAME} PRIVATE )
+
+use_group_folder()
