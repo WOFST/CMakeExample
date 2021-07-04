@@ -20,4 +20,8 @@ target_include_directories(${PROJECT_NAME}
 	$<BUILD_INTERFACE:${prj_interfaceRoot}> $<INSTALL_INTERFACE:interface/${PROJECT_NAME}>
 )
 
+# for install
+install(FILES ${prj_includeFiles} DESTINATION include/${PROJECT_NAME})
+install(FILES ${prj_interfaceFiles} DESTINATION interface/${PROJECT_NAME})
+
 use_group_folder()
