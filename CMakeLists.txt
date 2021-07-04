@@ -24,6 +24,7 @@ add_subdirectory(InstallTest)
 add_subdirectory(PackageTest)
 #add_subdirectory(OtherTest)
 
+# -----------------------for install and package ----------------- #
 # install document 
 install(FILES ${CMAKE_SOURCE_DIR}/README.md DESTINATION doc)
 install(DIRECTORY  ${CMAKE_SOURCE_DIR}/doc/ DESTINATION doc)
