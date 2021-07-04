@@ -23,7 +23,7 @@
 详情：离线文档查看`cmake-qt(7)`
 
 #### 环境
-附件Qt的cmake模块CMAKE_PREFIX_PATH到中
+附加Qt的cmake模块到CMAKE_PREFIX_PATH
 
 示例：`LIST(APPEND CMAKE_PREFIX_PATH "D:/Qt/Qt5.14.0/5.14.0/msvc2017_64") `
 
