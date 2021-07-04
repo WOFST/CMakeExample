@@ -8,6 +8,7 @@ add_library(${PROJECT_NAME} SHARED
 	${prj_headerFiles} 
 	${prj_srcFiles}
 	)
+use_group_folder()
 
 # target include directories and install 
 target_include_directories(${PROJECT_NAME}
@@ -16,12 +17,37 @@ target_include_directories(${PROJECT_NAME}
 	PUBLIC
 	$<BUILD_INTERFACE:${common_includeRoot}> $<INSTALL_INTERFACE:include>
 	$<BUILD_INTERFACE:${common_interfaceRoot}> $<INSTALL_INTERFACE:interface>
-	$<BUILD_INTERFACE:${prj_includeRoot}> $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
-	$<BUILD_INTERFACE:${prj_interfaceRoot}> $<INSTALL_INTERFACE:interface/${PROJECT_NAME}>
 )
 
-# for install
+IF(EXISTS ${prj_includeRoot})
+	target_include_directories(${PROJECT_NAME}
+		PUBLIC
+		$<BUILD_INTERFACE:${prj_includeRoot}> $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+	)
+ENDIF()
+
+IF(EXISTS ${prj_interfaceRoot})
+	target_include_directories(${PROJECT_NAME}
+		PUBLIC
+		$<BUILD_INTERFACE:${prj_interfaceRoot}> $<INSTALL_INTERFACE:interface/${PROJECT_NAME}>
+	)
+ENDIF()
+
+# install include and interface
 install(FILES ${prj_includeFiles} DESTINATION include/${PROJECT_NAME})
 install(FILES ${prj_interfaceFiles} DESTINATION interface/${PROJECT_NAME})
 
-use_group_folder()
+# install runtime files
+install(TARGETS ${PROJECT_NAME} 
+	EXPORT SharedLibrarySampleTargets
+	LIBRARY
+	DESTINATION lib)
+
+# export and install cmake module 
+export(EXPORT SharedLibrarySampleTargets
+  FILE ${CMAKE_CURRENT_BINARY_DIR}/SharedLibrarySampleTargets.cmake
+)
+install(EXPORT SharedLibrarySampleTargets
+   FILE SharedLibrarySampleTargets.cmake
+   DESTINATION lib/cmake/CMakeExample
+)
