@@ -1,0 +1,18 @@
+#ifndef @PROJECT_NAME@_EXPORT_H__
+#define @PROJECT_NAME@_EXPORT_H__
+
+#ifdef _WIN32
+#define @PROJECT_NAME@_EXPORT_SYMBOL __declspec(dllexport)
+#define @PROJECT_NAME@_IMPORT_SYMBOL __declspec(dllimport)
+#else
+#define @PROJECT_NAME@_EXPORT_SYMBOL
+#define @PROJECT_NAME@_IMPORT_SYMBOL
+#endif
+
+#ifdef @PROJECT_NAME@_EXPORTS
+#	define @PROJECT_NAME@_API @PROJECT_NAME@_EXPORT_SYMBOL
+#else
+#	define @PROJECT_NAME@_API @PROJECT_NAME@_IMPORT_SYMBOL
+#endif
+
+#endif // @PROJECT_NAME@_EXPORT_H__

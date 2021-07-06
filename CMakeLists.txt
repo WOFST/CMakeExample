@@ -17,6 +17,9 @@ include(general)
 # target source group
 option(keep_source_group_tree "Keep source group with local file system" OFF)
 
+# Enable test 
+enable_testing()
+
 # BuildingTest
 add_subdirectory(BuildingTest)
 add_subdirectory(CTest)
